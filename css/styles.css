@@ -1,0 +1,272 @@
+/* paleta de colores especificada en el pseudoselector :root, donde los
+selectores que inician con : se les conoce como pseudoselectores */
+
+/* Globales, configuración utilizable en todo el sitio */
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --amarillo: #ffc107;
+    --azul: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* Hack para Box Model */
+    scroll-snap-type: y mandatory; /* Scroll sobre el eje de las Y (vertical)*/
+}
+
+/* Snap Scroll */
+.servicios, .navegacion-principal, .formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit; /* Crea una caja alrededor de cualquier elemento */
+}
+
+body {
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /* Degradado del fondo */
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer;
+    background-color: var(--amarillo);
+    color: var(--oscuro);
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.35); /* obtenido de https: //www.cssmatic.com/box-shadow */
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Tamaño de la tipografía en títulos */
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+/* Utilidades */
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+.m-top-20 {
+    margin-top: 20px;
+}
+
+/* Navegación principal */
+.nav-bg {
+    background-color: var(--azul);
+}
+
+.navegacion-principal {   
+   display: flex;
+   flex-direction: column;
+}
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--amarillo);
+    color: var(--oscuro);
+}
+
+/* imagen hero.jpg */
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5); /* Forma anterior */
+    background-color: rgb(0 0 0 / 50%); /* Forma nueva */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* alineación horizontal */
+    justify-content: center; /* alineación vertical */
+}
+
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: baseline;
+}
+
+/* Sección de servicios */
+@media (min-width: 768px) {
+    .servicios {
+        display: grid; /* Habilita CSS Grid */
+        grid-template-columns: repeat(3, 1fr); /* Indica que se quiere 3 columnas iguales, equivale a cada columna de 33.3% */
+        column-gap: 1rem; /* funciona similar a un margen, agrega una separación entre columnas */
+    }    
+}
+
+.servicio {
+    display: flex; /* habilita flex */
+    flex-direction: column; /* cambia la dirección de row a column */
+    align-items: center; /* alinea horizontalmente el círculo en el centro */
+}
+
+.servicio h3 {
+    color: var(--azul);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2; /* establece interlineado entre las líneas de un párrafo */
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem; /* Crea un cuadrado: alto */
+    width: 15rem; /* Crea un cuadrado: ancho */
+    background-color: var(--amarillo);
+    border-radius: 50%; /* genera un borde redondo para convertir el cuadrado en círculo */
+    display: flex; /* habilita flex en row */
+    justify-content: space-evenly; /* alinea horizontalmente los iconos con espacios entre ellos */
+    align-items: center; /* alinea verticalmente los iconos */
+}
+
+/* Sección del Formulario Contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /* utilizar el valor más pequeño entre dos valores (parámetros) */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto 2rem auto;
+    color: var(--amarillo);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+    .campo:nth-child(3), .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/* Pie de página */
+.footer {
+    text-align: center;
+}
